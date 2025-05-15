@@ -6,11 +6,14 @@
         Este módulo é responsável pelos ajustes em crm e vendas.
     """,
     'author': 'VSM Enterprise Solutions',
-    'depends': ['base','crm'],
+    'depends': ['base', 'crm', 'sale'],
     'static': [
         'static/description/icon.png', 
     ],
-    'data': ['views/crm_lead_meeting_inherit.xml'],
+    'data': [
+        'views/crm_lead_meeting_inherit.xml',
+        'views/sale_order_inherit.xml'
+    ],
     'installable': True,
     'application': True,
     'auto_install': False,
