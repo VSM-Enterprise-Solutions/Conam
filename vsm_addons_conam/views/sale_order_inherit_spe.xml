@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_inherit_spe" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.spe</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="spe_id" options="{'no_create_edit': False, 'no_open': False}"/>
+            </xpath>
+            <xpath expr="//field[@name='spe_id']" position="after">
+                <field name="cnpj_spe" widget="cnpj_mask" placeholder="00.000.000/0000-00"/>
+            </xpath>
+        </field>
+    </record>
+</odoo> 

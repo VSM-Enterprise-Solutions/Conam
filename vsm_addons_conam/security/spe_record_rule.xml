@@ -1,0 +1,12 @@
+<odoo>
+    <record id="spe_sociedade_own_partner_rule" model="ir.rule">
+        <field name="name">SPE: Só pode ver/criar SPE do próprio cliente</field>
+        <field name="model_id" ref="model_spe_sociedade"/>
+        <field name="domain_force">[("partner_id", "=", user.partner_id.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+</odoo> 
