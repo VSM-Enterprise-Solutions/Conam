@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="crm_lead_view_form_inherit_project_address" model="ir.ui.view">
+            <field name="name">crm.lead.form.project.address</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="before">
+                    <page string="Endereço do Projeto" name="project_address">
+                        <group col="2">
+                            <field name="project_street" placeholder="Rua"/>
+                            <field name="project_street2" placeholder="Complemento"/>
+                            <field name="project_zip" placeholder="CEP"/>
+                            <field name="project_city" placeholder="Cidade"/>
+                            <field name="project_state_id"
+                                   options="{'no_create': True, 'no_open': True}"
+                                   domain="[('country_id', '=', project_country_id)]"/>
+                            <field name="project_country_id"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Tree -->
+        <record id="crm_lead_view_tree_inherit_project_address" model="ir.ui.view">
+            <field name="name">crm.lead.tree.project.address</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_tree_view_leads"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='city']" position="after">
+                    <field name="project_city" optional="hide"/>
+                    <field name="project_state_id" optional="hide"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Search -->
+        <record id="crm_lead_view_search_inherit_project_address" model="ir.ui.view">
+            <field name="name">crm.lead.search.project.address</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.view_crm_case_leads_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='city']" position="after">
+                    <field name="project_city"/>
+                    <field name="project_state_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
